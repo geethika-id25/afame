@@ -4,7 +4,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression  # Replace with your regression model
 # Load data
-data = pd.read_csv("movie_data.csv")  # Replace with your data path
+data = pd.read_csv("Movie dataset.csv")  # Replace with your data path
 # Handle missing values (choose your approach)
 # Option 1: Remove rows with missing values for crucial features
 data.dropna(subset=["rating", "genre", "director"], inplace=True)
