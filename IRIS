@@ -1,0 +1,21 @@
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression  # Replace with your chosen classifier
+from sklearn.metrics import accuracy_score
+iris = load_iris()
+# Print feature names and data description
+print(iris.feature_names)
+print(iris.data[:5])
+
+# Print target names (flower species)
+print(iris.target_names)
+X = iris.data  # Features
+y = iris.target  # Target variable (species)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = LogisticRegression()  # Choose your classifier (e.g., KNN, Decision Tree)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.4f}")
