@@ -3,22 +3,12 @@ import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression  # Replace with your regression model
-# Load data
 data = pd.read_csv("Movie dataset.csv")  
-
 data.dropna(subset=["rating", "genre", "director"], inplace=True)
-# Option 2: Impute missing values (example: using average rating by genre)
-# genre_avg_rating = data.groupby("genre")["rating"].mean()
-# data["rating"].fillna(genre_avg_rating, inplace=True)
-# Feature engineering
-# One-hot encode genres
 genre_encoder = OneHotEncoder(sparse=False)
 genres = pd.get_dummies(data["genre"])
 data = pd.concat([data, genres], axis=1)
 data.drop("genre", axis=1, inplace=True)
-# Encode director and actors (replace with your chosen method)
-# ... (e.g., one-hot encoding or embedding)
-# Separate features and target variable
 X = data.drop("rating", axis=1)  # Features
 y = data["rating"]  # Target variable
 # Train-test split
